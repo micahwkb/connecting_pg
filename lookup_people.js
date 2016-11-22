@@ -30,22 +30,24 @@ client.connect((err) => {
     if (err) {
       return console.error("error running query", err);
     }
-    result.rows.forEach(function(person) {
-      const birth = moment(person.birthdate).format('YYYY-MM-DD')
+    console.log("Searching...");
+    if (result.rows.length > 0) {
+      console.log(`Found ${result.rows.length} person(s) by the name '${userInput}':`);
 
-      console.log(`- ${result.rowCount}: ${person.first_name} ${person.last_name}, born '${birth}'`);
-    })
-    client.end();
-  });
-
-  /*client.query('SELECT * FROM famous_people', (err, result) => {
-    if (err) {
-      return console.error("error running query", err);
+      let resultCount = 0;
+      result.rows.forEach(function(person) {
+        // iterate row counter
+        resultCount += 1;
+        // format birthdate output
+        const birth = moment(person.birthdate).format('YYYY-MM-DD')
+        // format output string
+        console.log(`- ${resultCount}: ${person.first_name} ${person.last_name}, born '${birth}'`);
+      })
+    } else {
+      console.log("There were no results")
     }
 
-      console.log(result);
-
     client.end();
-  });*/
+  });
 
 });
