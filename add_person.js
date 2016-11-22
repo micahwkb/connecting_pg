@@ -18,25 +18,17 @@ const insertData = {
   birthdate:  birthdate
 }
 
-const printAction = function(result) {
-  console.log(`Added ${firstname} ${lastname} to database:`);
-  // lookup(result)
-}
 
+// take these actions if the input is valid and an error isn't hit
 const resultHandler = function(result) {
   console.log("Working...")
   printAction();
   pg.destroy();
 }
 
-const queryDatabase = function(userInput) {
-  pg('famous_people')
-  .where('first_name', '=', firstname)
-  .andWhere('last_name', '=', lastname)
-  .then(resultHandler)
-  .catch(function(error) {
-    console.error(error)
-  });
+// create output string
+const printAction = function(result) {
+  console.log(`Added ${firstname} ${lastname} to database:`);
 }
 
 if (userInputs.length === 3) {
