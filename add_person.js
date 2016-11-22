@@ -1,5 +1,5 @@
 const moment = require("moment");
-const knex_configs = require("./knexfile").production;
+const knex_configs = require("./knexfile").development;
 
 const pg = require("knex")({
   client: 'pg',
@@ -34,7 +34,7 @@ const printAction = function(result) {
 if (userInputs.length === 3) {
   /*
   insert user's input to database via knex's postgres handler
-  */debugger
+  */
   pg('famous_people')
     .insert(insertData)
     .then(resultHandler)

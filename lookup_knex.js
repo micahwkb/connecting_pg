@@ -1,5 +1,5 @@
 const moment = require("moment");
-const knex_configs = require("./knexfile").production;
+const knex_configs = require("./knexfile").development;
 
 const pg = require("knex")({
   client: 'pg',
@@ -31,21 +31,17 @@ const queryResultHandler = function(result) {
   // pg.destroy();
 }
 
-const queryDatabase = function(userInput) {
+if (userInput) {
   pg('famous_people')
-  .where('first_name', '=', userInput)
-  .orWhere('last_name', '=', userInput)
-  .then(queryResultHandler)
-  .catch(function(error) {
-    console.error(error)
+    .where('first_name', '=', userInput)
+    .orWhere('last_name', '=', userInput)
+    .then(queryResultHandler)
+    .catch(function(error) {
+      console.error(error)
   });
+} else {
+  console.log("Please provide a first or last name to search");
+  pg.destroy();
 }
 
-queryDatabase(userInput)
 
-module.exports = {
-  queryDatabase: queryDatabase,
-  queryResultHandler: queryResultHandler,
-  printQueryResults: printQueryResults
-
-}
