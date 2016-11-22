@@ -1,0 +1,23 @@
+{
+  "name": "connecting_pg",
+  "version": "1.0.0",
+  "description": "using pg with node, database on Heroku platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micahwkb/connecting_pg.git"
+  },
+  "author": "Micah Britton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/micahwkb/connecting_pg/issues"
+  },
+  "homepage": "https://github.com/micahwkb/connecting_pg#readme",
+  "dependencies": {
+    "moment": "^2.17.0",
+    "pg": "^6.1.0"
+  }
+}
